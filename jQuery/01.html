@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        
+        #container {
+            background: yellowgreen;
+            width: 100px;
+            height: 100px;
+            top: 50px;
+            left: 300px;
+            position: absolute;
+        }
+        
+        #buttons {
+            margin: 300px 330px;
+        }
+        
+        button {
+            display: flex;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        $(function() {
+            var $div = $('#container')
+            var $btn1 = $('#btn1');
+            var $btn2 = $('#btn2');
+            var $btn3 = $('#btn3');
+            var $btn4 = $('#btn4');
+
+            $btn1.click(function() {
+                // 设置大小
+                // 调用属性方法： .animate() 参数传style 对象，不用加px 单位，jQuery 不需要写 px, 如果加单位要写成字符串形式 '200px'
+                $div.animate({
+                        height: 200,
+                        width: 200,
+                    }, 2000) // 高宽同时增大到200
+                    // 如果想先变宽，再变高： 
+                $div.animate({
+                    width: 200
+                }, 1000).animate({
+                    height: 200
+                }, 1000)
+            })
+            $btn2.click(function() {
+                // 移动到指定位置： {left, top} 位置作为参数：
+                // 移动到{500,100}
+
+                $div.animate({
+                    left: 500,
+                    top: 100
+                }, 2000)
+            })
+            $btn3.click(function() {
+                // 移动指定距离： {left,top}
+                // 指定移动距离：{left:100, top:50}
+                $div.animate({
+                    left: '+=100',
+                    top: '+=50'
+                })
+            })
+            $btn4.click(function() {
+                // 停止动画
+                $div.stop()
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        爱在西元前，学在尚硅谷
+    </div>
+    <div id="buttons">
+        <button id="btn1">btn1逐渐扩大</button>
+        <button id="btn2">btn2移动到指定位置</button>
+        <button id="btn3">btn3移动到指定距离</button>
+        <button id="btn4">btn4停止动画</button>
+
+    </div>
+</body>
+
+</html>
